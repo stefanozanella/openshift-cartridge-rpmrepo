@@ -2,9 +2,9 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-HTTPD_CFG_FILE=$OPENSHIFT_HTTPD_DIR/etc/conf/httpd.conf
-HTTPD_CFG_DIR=$OPENSHIFT_HTTPD_DIR/etc/conf.d
-HTTPD_PID_FILE=$OPENSHIFT_HTTPD_DIR/run/httpd.pid
+HTTPD_CFG_FILE=$OPENSHIFT_RPMREPO_DIR/etc/conf/httpd.conf
+HTTPD_CFG_DIR=$OPENSHIFT_RPMREPO_DIR/etc/conf.d
+HTTPD_PID_FILE=$OPENSHIFT_RPMREPO_DIR/run/httpd.pid
 
 function apache() {
     client_message "$2 Apache HTTPD server"
@@ -31,7 +31,7 @@ function configtest() {
 }
 
 function status() {
-   if output=$(curl http://$OPENSHIFT_HTTPD_IP:$OPENSHIFT_HTTPD_PORT/server-status?auto 2>&1 )
+   if output=$(curl http://$OPENSHIFT_RPMREPO_IP:$OPENSHIFT_RPMREPO_PORT/server-status?auto 2>&1 )
    then
       client_result "Application is running"
       client_result $output
@@ -45,9 +45,9 @@ function status() {
 }
 
 function tidy() {
-    client_message "Emptying log dir: $OPENSHIFT_HTTPD_LOG_DIR"
+    client_message "Emptying log dir: $OPENSHIFT_RPMREPO_LOG_DIR"
     shopt -s dotglob
-    rm -rf $OPENSHIFT_HTTPD_LOG_DIR/*
+    rm -rf $OPENSHIFT_RPMREPO_LOG_DIR/*
     return 0
 }
 

@@ -1,11 +1,11 @@
-Name: httpd
-Cartridge-Short-Name: HTTPD 
-Display-Name: HTTPD Cartridge
-Description: "A HTTPD cartridge for basic OpenShift usage."
+Name: rpmrepo
+Cartridge-Short-Name: RPMREPO 
+Display-Name: RPM Repository Cartridge
+Description: "A cartridge for publishing RPM repositories in OpenShift."
 Version: '0.1'
 License: ASL 2.0
 Vendor: Stefano Zanella
-Cartridge-Version: 0.0.2
+Cartridge-Version: 0.0.1
 Cartridge-Vendor: stefanozanella
 Categories:
   - service

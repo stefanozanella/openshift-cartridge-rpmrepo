@@ -1,15 +1,15 @@
-ServerRoot "<%= ENV['OPENSHIFT_HTTPD_DIR'] %>"
+ServerRoot "<%= ENV['OPENSHIFT_RPMREPO_DIR'] %>"
 DocumentRoot "<%= "#{ENV['OPENSHIFT_REPO_DIR']}" %>"
-Listen <%= "#{ENV['OPENSHIFT_HTTPD_IP']}:#{ENV['OPENSHIFT_HTTPD_PORT']}" %>
+Listen <%= "#{ENV['OPENSHIFT_RPMREPO_IP']}:#{ENV['OPENSHIFT_RPMREPO_PORT']}" %>
 
 User  <%= ENV['OPENSHIFT_GEAR_UUID'] %>
 Group <%= ENV['OPENSHIFT_GEAR_UUID'] %>
 
-ErrorLog "<%= "|/usr/sbin/rotatelogs #{ENV['OPENSHIFT_HTTPD_DIR']}/logs/error_log-%Y%m%d-%H%M%S-%Z 86400" %>"
-CustomLog "<%= "|/usr/sbin/rotatelogs #{ENV['OPENSHIFT_HTTPD_DIR']}/logs/access_log-%Y%m%d-%H%M%S-%Z 86400" %>" combined
+ErrorLog "<%= "|/usr/sbin/rotatelogs #{ENV['OPENSHIFT_RPMREPO_DIR']}/logs/error_log-%Y%m%d-%H%M%S-%Z 86400" %>"
+CustomLog "<%= "|/usr/sbin/rotatelogs #{ENV['OPENSHIFT_RPMREPO_DIR']}/logs/access_log-%Y%m%d-%H%M%S-%Z 86400" %>" combined
 
 <IfVersion >= 2.4>
-DefaultRuntimeDir "<%= "#{ENV['OPENSHIFT_HTTPD_DIR']}/run"%>"
+DefaultRuntimeDir "<%= "#{ENV['OPENSHIFT_RPMREPO_DIR']}/run"%>"
 </IfVersion>
 
 DirectoryIndex index.html
