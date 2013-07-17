@@ -1,5 +1,5 @@
 ServerRoot "<%= ENV['OPENSHIFT_RPMREPO_DIR'] %>"
-DocumentRoot "<%= "#{ENV['OPENSHIFT_REPO_DIR']}" %>"
+DocumentRoot "<%= ENV['OPENSHIFT_DATA_DIR'] %>"
 Listen <%= "#{ENV['OPENSHIFT_RPMREPO_IP']}:#{ENV['OPENSHIFT_RPMREPO_PORT']}" %>
 
 User  <%= ENV['OPENSHIFT_GEAR_UUID'] %>
@@ -14,7 +14,10 @@ DefaultRuntimeDir "<%= "#{ENV['OPENSHIFT_RPMREPO_DIR']}/run"%>"
 
 DirectoryIndex index.html
 
-<Directory "<%= "#{ENV['OPENSHIFT_REPO_DIR']}" %>">
+LoadModule autoindex_module modules/mod_autoindex.so
+
+<Directory "<%= ENV['OPENSHIFT_DATA_DIR'] %>">
   AllowOverride All
+  Options Indexes FollowSymLinks
 </Directory>
 
